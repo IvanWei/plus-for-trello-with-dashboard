@@ -73,18 +73,6 @@ resolveList = (lists) ->
     appendElement(listMenuParent, newMenuListTemplate('list', list.name, "list-#{listIndex}", listIndex))
     return
 
-    # $("#list-#{listIndex}").click (evt) ->
-    #   that = $(@)
-    #   listIndex = that.attr("index")
-    #   # sinceDate = $('#since-date').val()
-    #   targetList = lists[listIndex]
-    #
-    #   if $(subTitle).text() is 'A subtitle for List name'
-    #     $(subTitle).text(targetList.name)
-    #   else
-    #     currentText = $(subTitle).text() + ' & ' + targetList.name
-    #     $(subTitle).text(currentText)
-    #   if that.hasClass('list-active') then that.removeClass('list-active') else that.addClass('list-active')
   submit.text('查詢')
   $(".trello-list").removeClass('collapse')
   return
@@ -157,7 +145,7 @@ submit.click ->
     selectedList.push {id: currentListData.id, name: currentListData.name}
     return
 
-  console.log "currentListData:: ", selectedList
+  # console.log "currentListData:: ", selectedList
 
   _.forEach selectedList, (selectedObj) ->
     promiseArr.push new Promise((resolve, reject) ->
@@ -169,13 +157,14 @@ submit.click ->
 
   Promise.all(promiseArr)
   .then ((results) ->
+    console.log "results:: ", results
     if typeof db.membersDB is 'undefined'
       console.error 'membersDB isn\'t existing.'
       return
 
     results = flatten results
-    console.log "membersDB:: ", db.membersDB().get()
-    console.log "resultsAA::", results
+    # console.log "membersDB:: ", db.membersDB().get()
+    # console.log "resultsAA::", results
     commentCardData = []
 
     cardData = _.map results, (result) ->
@@ -185,9 +174,9 @@ submit.click ->
         if !!useTimeData
           timeInfo = useTimeData[0].split('/')
 
-          console.log "AAA:: ", if timeInfo[0] is 'undefined' then timeInfo[0] else Number timeInfo[0]
-        else
-          console.log "BB:: " , commend.data.text
+        #   console.log "AAA:: ", if timeInfo[0] is 'undefined' then timeInfo[0] else Number timeInfo[0]
+        # else
+        #   console.log "BB:: " , commend.data.text
 
         commentCardData.push {
           date: new Date(commend.date).format('yyyy-MM-dd<br>HH:mm:ss')
@@ -218,8 +207,13 @@ submit.click ->
     else
       db.commends.merge(commentCardData, ['date'])
 
-    db.cards().join(db.commends(), ['id', '===', 'cardId']).join(db.membersDB(), ['createUserId', '===', 'id']).order('date desc').callback ->
-      console.log "res:: ", @get()
+    filter = _.map results, (result) ->
+      return result.id
+    , []
+
+    db.cards().join(db.commends(), ['id', '===', 'cardId']).join(db.membersDB(), ['createUserId', '===', 'id'])
+    .filter(cardId: filter).order('date desc').callback ->
+      # console.log "res:: ", @get()
       _.forEach @get(), (result) ->
         return if result.spentTime is 0 || result.spentTime is 'undefined'
         index++
@@ -240,7 +234,7 @@ submit.click ->
 
     return
   ), (reason) ->
-    console.log "[API] Get card detail was error.", reason
+    console.error "[API] Get card detail was error.", reason
     return
 
 # Todo 轉換，移至另一個檔案
@@ -290,6 +284,6 @@ getMembersByBoardId = (boardId) ->
       else
         db.membersDB.merge(results, ['id'])
 
-      console.log "reuslts:: ", db.membersDB().order("fullName").get()
+      # console.log "reuslts:: ", db.membersDB().order("fullName").get()
     , (error) ->
       console.error "Somthing wrong: ", error
