@@ -1,0 +1,60 @@
+doctype html
+html
+  head
+    title Plus for Trello with Dashboard
+    meta(charset="UTF-8")
+    script(src="libs/jquery.v2.1.min.js")
+    script(src="libs/lodash.v3.js")
+    script(src="libs/taffydb.v2.7.min.js")
+    script(src="libs/chartist.v0.9.min.js")
+    //- script(src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.8/d3.min.js")
+    script(src="https://api.trello.com/1/client.js?key=034454f28a221e5a524c8972f263eb4b")
+    link(rel="stylesheet" href="css/pure-min.css")
+    link(rel="stylesheet" href="css/dashboard.css")
+    link(rel="stylesheet" href="css/purecssLayout.css")
+    link(rel="stylesheet" href="css/chartist.v0.9.min.css")
+
+body
+  #layout
+    #menu
+      .pure-menu
+        h3.pure-menu-heading(href='javascript:void(0)') Menu
+        ul.pure-menu-list
+          li.pure-menu-item.pure-menu-has-children
+            a#menu-link-1.pure-menu-link(href='javascript:void(0)') Board
+            ul.pure-menu-children
+
+        ul.pure-menu-list.author-info-menu
+          li.pure-menu-item
+            a.pure-menu-link(href='javascript:void(0)') About me
+    #main
+      .header
+        h1 Board Title
+        h2 A subtitle for List name
+        button#login.pure-button.pure-button-primary 登入
+        button#submit.pure-button.pure-button-primary 查詢
+      .content
+        .dashboard-table.trello-list.collapse
+          table.pure-table.pure-table-horizontal
+            thead
+              tr
+                th
+                th #
+                th List
+            tbody
+
+        .dashboard-table.comment-card-list
+          table.pure-table
+            thead
+              tr
+                th #
+                th(style="width: 100px;") Date
+                th Task
+                th Name
+                th(style="width: 35px;") 時間
+            tbody
+
+  //- dist
+  script(src="dist/plus4TrelloWithDashboard.js")
+  script(src="dist/taffyDB.js")
+  script(src="dist/trello.js")
