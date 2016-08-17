@@ -54,8 +54,8 @@ module.exports = (grunt) ->
           mangle: false
         }
         files: {
-          'temp/dist/dashboard.min.js': 'temp/dist/dashboard.js'
-          'temp/libs/lodash.v3.min.js': 'temp/libs/lodash.v3.js'
+          #'temp/dist/dashboard.min.js': 'temp/dist/dashboard.js'
+         # 'temp/libs/lodash.v3.min.js': 'temp/libs/lodash.v3.js'
         }
       }
 
@@ -74,6 +74,7 @@ module.exports = (grunt) ->
           'build/css/purecssLayout.css': 'src/css/purecssLayout.css'
           'build/libs/chartist.v0.9.min.js': 'node_modules/chartist/dist/chartist.min.js'
           'build/css/chartist.v0.9.min.css': 'node_modules/chartist/dist/chartist.min.css'
+          'build/CNAME': 'CNAME'
         }
       }
       build:
@@ -81,7 +82,7 @@ module.exports = (grunt) ->
           {
             expand: true
             cwd: 'temp/'
-            src: ['css/*', '**/*.min.js', 'CNAME']
+            src: ['css/*', '**/*.min.js']
             dest: 'build/'
             filter: 'isFile'
           }
@@ -121,13 +122,12 @@ module.exports = (grunt) ->
   #  'build'
   #  'connect'
   #]
-  grunt.registerTask 'build', [
-    'clean:build'
-    'copy:build'
-    'cssmin'
-    'uglify'
-  ]
-
+  #grunt.registerTask 'build', [
+  #  'clean:build'
+  #  'copy:build'
+  #  'cssmin'
+  #  'uglify'
+  #]
   grunt.registerTask 'default', [
     'clean:dev'
     'copy:dev'
