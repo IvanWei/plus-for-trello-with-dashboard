@@ -75,6 +75,7 @@ module.exports = (grunt) ->
           'build/libs/chartist.v0.9.min.js': 'node_modules/chartist/dist/chartist.min.js'
           'build/css/chartist.v0.9.min.css': 'node_modules/chartist/dist/chartist.min.css'
           'build/CNAME': 'CNAME'
+          'build/README.md': 'README.md'
         }
       }
       build:
