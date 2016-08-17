@@ -1,0 +1,26 @@
+/*Override Pruecss Style*/
+#main > .header {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.pure-table {margin: 0 auto;}
+
+.dashboard-table {
+  position: absolute;
+  width: 800px;
+}
+
+.dashboard-table.trello-list {
+  z-index: 1;
+  background-color: #fff;
+  box-shadow: 0px 3px 3px 0px #CCC;
+  padding-bottom: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+
+}
+
+.dashboard-table.trello-list.collapse {
+  display: none;
+}
