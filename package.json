@@ -1,26 +1,24 @@
 {
   "name": "plus-for-trello-with-dashboard",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "plus for trello data with dashboard.",
   "repository": "",
   "keywords": [
     "trello",
     "plus for trello",
-    "burndown chart",
     "dashboard"
   ],
   "main": "index.html",
   "scripts": {
     "start": "grunt develop",
-    "start minify": "grunt server",
     "build:dev": "grunt"
   },
   "author": {
     "name": "Hong-Lin Wei (Ivan Wei)",
     "email": "scorpionseed@gmail.com",
-    "url": "https://ivanwei.github.io/blog"
+    "url": "https://blog.ivanwei.co"
   },
-  "homepage": "https://ivanwei.github.io/blog",
+  "homepage": "https://app.ivanwei.co/plus-for-trello-with-dashboard",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-coffee": "^0.10.1",
@@ -41,5 +39,9 @@
     "taffydb": "~2.7.2",
     "chartist": "^0.9.5"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IvanWei/plus-for-trello-with-dashboard.git"
+  }
 }

@@ -1,7 +1,6 @@
-#jshint node:true
-module.exports = (grunt) ->
-  'use strict'
+'use strict'
 
+module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
     jade: {
@@ -82,7 +81,7 @@ module.exports = (grunt) ->
           {
             expand: true
             cwd: 'temp/'
-            src: ['css/*', '**/*.min.js']
+            src: ['css/*', '**/*.min.js', 'CNAME']
             dest: 'build/'
             filter: 'isFile'
           }
@@ -118,10 +117,10 @@ module.exports = (grunt) ->
     'connect'
     'watch'
   ]
-  grunt.registerTask 'server', [
-    'build'
-    'connect'
-  ]
+  #grunt.registerTask 'server', [
+  #  'build'
+  #  'connect'
+  #]
   grunt.registerTask 'build', [
     'clean:build'
     'copy:build'

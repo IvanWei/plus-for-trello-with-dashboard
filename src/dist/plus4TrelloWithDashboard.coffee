@@ -24,7 +24,7 @@ authenticationSuccess = (cb) ->
   return cb()
 
 authenticationFailure = ->
-  console.error 'Failed authentication'
+  console.error 'Failed authentication, please login again.'
   return
 
 appendElement = (targetElement, newElement) -> return $(targetElement).append newElement
