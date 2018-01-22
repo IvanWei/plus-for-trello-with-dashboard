@@ -11,7 +11,8 @@
   "main": "index.html",
   "scripts": {
     "start": "grunt develop",
-    "build:dev": "grunt"
+    "build:dev": "grunt",
+    "deploy": "cd build && git add . && git commit -m 'update gh-pages' && git push"
   },
   "author": {
     "name": "Hong-Lin Wei (Ivan Wei)",
@@ -34,7 +35,7 @@
   },
   "dependencies": {
     "purecss": "^0.6.0",
-    "jquery": "~2.1.4",
+    "jquery": "~3.0.0",
     "lodash": "^3.10.1",
     "taffydb": "~2.7.2",
     "chartist": "^0.9.5"
